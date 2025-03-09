@@ -6,11 +6,21 @@ authors = [
     {name = "wangshichao",email = "shichao.w@outlook.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<4.0"
 dependencies = [
+    "requests (>=2.32.3,<3.0.0)",
+    "pydantic (>=2.10.6,<3.0.0)",
+    "pydantic-settings (>=2.8.1,<3.0.0)",
+    "dotenv (>=0.9.9,<0.10.0)",
+    "strenum (>=0.4.15,<0.5.0)",
+    "requests-ratelimiter (>=0.7.0,<0.8.0)",
 ]
 
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+
