@@ -120,8 +120,13 @@ class ApiClient:
             response = self.request(
                 "https://api.bilibili.com/x/v2/reply/reply", params=params
             )
-            if response.code == 12002:
-                logging.info("评论区已关闭")
+            if response.code != 0:
+                logging.error(
+                    "ApiClient.comment_replies failed with code %d", response.code
+                )
+                return
+            if response.data is None:
+                logging.warning("ApiClient.comment_replies failed with no data")
                 return
             data = CommentRepliesData.model_validate(response.data)
             if not data.replies:
