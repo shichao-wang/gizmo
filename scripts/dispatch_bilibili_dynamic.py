@@ -225,7 +225,7 @@ def main(mid: int, profile: str = "staging"):
     # noinspection PyArgumentList
     config = AppConfig(_env_file=f"{profile}.env", member_id=mid)
     logging.basicConfig(
-        level=logging.DEBUG,
+        level=logging.INFO,
         format="%(asctime)s - %(name)s - %(levelname)s - %(module)s:%(lineno)d - %(message)s",
     )
     client = ApiClient(config.bilibili_cookies)
