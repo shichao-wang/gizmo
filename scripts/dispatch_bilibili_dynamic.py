@@ -162,6 +162,9 @@ class CommentAuthorReplyUpdator:
         if new_comment_replies:
             self._latest_comment = new_comment_replies[0][0]
 
+        for comment, reply in reversed(new_comment_replies):
+            self._handler.handle((comment, reply))
+
     def _is_new_comment(self, comment: Reply):
         if self._latest_comment is None:
             return True
