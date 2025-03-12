@@ -1,5 +1,6 @@
 import logging
 import multiprocessing
+import random
 import time
 import typing as t
 from multiprocessing import Queue
@@ -233,7 +234,7 @@ def main(mid: int, profile: str = "staging"):
     member_updator = MemberUpdator(client, config.member_id, handler)
     while True:
         member_updator.update()
-        time.sleep(30)
+        time.sleep(random.randint(120, 300))
 
 
 if __name__ == "__main__":
