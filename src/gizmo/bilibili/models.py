@@ -52,7 +52,10 @@ class Dynamic(pydantic.BaseModel):
     visible: bool
 
     def is_top(self) -> bool:
-        return self.modules.module_tag.text == "置顶"
+        module_tag = self.modules.module_tag
+        if module_tag is None:
+            return False
+        return module_tag.text == "置顶"
 
     def mid(self) -> int:
         return self.modules.module_author.mid
